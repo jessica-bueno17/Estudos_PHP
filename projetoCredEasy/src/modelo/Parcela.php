@@ -4,35 +4,41 @@ namespace br\com\sicredi\projetoCredEasy\modelo;
 
 class Parcela {
 
-  //private $idEmprestimo;
-  //private $cpfCliente;
+  private $numeroDaParcela;
+  private $idEmprestimo;
   private $valorParcela;
-  private $numeroParcela;
-  private $multa;
   private $dataVencimento;
-  private $dataPagamento;
-  private $valorPago;
-  private $statusParcela;
   
+  private $dataPagamento;
+  private $multa;
+  private $valorPago;
+
+  private $statusParcela = "Aberta";                     
+                
   // função contrutora
-  public function __construct(float $valorParcela, int $numeroParcela, float $multa, string $dataVencimento,
-  string $dataPagamento, float $valorPago, string $statusParcela) 
+  public function __construct(int $numeroDaParcela, int $idEmprestimo, float $valorParcela,
+  string $dataVencimento)
   {
     
+    $this->setNumeroDaParcela($numeroDaParcela);
+    $this->setIdEmprestimo($idEmprestimo);
     $this->setValorParcela($valorParcela);
-    $this->setNumeroParcela($numeroParcela);
-    $this->setMulta($multa);
     $this->setDataVencimento($dataVencimento);
-    $this->setDataPagamento($dataPagamento);
-    $this->setValorPago($valorPago);
-    $this->setStatusParcela($statusParcela);
+     
+  }
+
+  // ========== Funções Setters ============
+  public function setNumeroDaParcela(int $numeroDaParcela): void
+  {
+    $this->numeroDaParcela = $numeroDaParcela;
 
   }
 
-  // Validações
-  
+  public function setIdEmprestimo(int $idEmprestimo): void
+  {
+    $this->idEmprestimo = $idEmprestimo;
 
-  // Funções Setters
+  }
 
   public function setValorParcela(float $valorParcela): void
   {
@@ -40,21 +46,15 @@ class Parcela {
 
   }
 
-  public function setNumeroParcela(int $numeroParcela): void
+  public function setDataVencimento(string $dataVencimento): void
   {
-    $this->numeroParcela = $numeroParcela;
+    $this->dataVencimento = $dataVencimento;
 
   }
 
   public function setMulta(float $multa): void
   {
     $this->multa = $multa;
-
-  }
-
-  public function setDataVencimento(string $dataVencimento): void
-  {
-    $this->dataVencimento = $dataVencimento;
 
   }
 
@@ -76,24 +76,22 @@ class Parcela {
 
   }
 
+  // ========= Funções Getters =========
+  public function getNumeroDaParcela(): int
+  {
+    return $this->numeroDaParcela;
 
-  // Funções Getters - Funções para recuperar
+  }
+
+  public function getIdEmprestimo(): int
+  {
+    return $this->idEmprestimo;
+
+  }
 
   public function getValorParcela(): float
   {
     return $this->valorParcela;
-
-  }
-
-  public function getNumeroParcela(): int
-  {
-    return $this->numeroParcela;
-
-  }
-
-  public function getMulta(): float
-  {
-    return $this->multa;
 
   }
 
@@ -102,10 +100,16 @@ class Parcela {
     return $this->dataVencimento;
 
   }
-
+  
   public function getDataPagamento(): string
   {
     return $this->dataPagamento;
+
+  }
+
+  public function getMulta(): float
+  {
+    return $this->multa;
 
   }
 
@@ -123,15 +127,17 @@ class Parcela {
 
 }
 
-//(float $valorParcela, int $numeroParcela, float $multa, string $dataVencimento,
-//string $dataPagamento, float $valorPago, string $statusParcela) 
 
-//$parcelaJessica = new Parcela(916.67,2,0,'2022-06-15','2022-06-08',916.67,'Paga');
+//$parcelaJessica = new Parcela(1,2,125.00,'2022-07-15');
 //var_dump($parcelaJessica);
-/*echo "Valor parcela: " . $parcelaJessica->getValorParcela() .PHP_EOL;
-echo "Número parcela: " . $parcelaJessica->getNumeroParcela() .PHP_EOL;
-echo "Valor multa: " . $parcelaJessica->getMulta() .PHP_EOL;
+
+/*echo "Número da Parcela: " . $parcelaJessica->getNumeroDaParcela() .PHP_EOL;
+echo "Id do Empréstimo: " . $parcelaJessica->getIdEmprestimo() . PHP_EOL;
+echo "Valor parcela: " . $parcelaJessica->getValorParcela() .PHP_EOL;
 echo "Data Vencimento: " . $parcelaJessica->getDataVencimento() .PHP_EOL;
-echo "Data Pagamento: " . $parcelaJessica->getDataPagamento() .PHP_EOL;
-echo "Valor pago: " . $parcelaJessica->getValorPago() .PHP_EOL;
 echo "Status parcela: " . $parcelaJessica->getStatusParcela() .PHP_EOL;*/
+
+/*echo "Data Pagamento: " . $parcelaJessica->getDataPagamento() .PHP_EOL;
+echo "Valor multa: " . $parcelaJessica->getMulta() .PHP_EOL;
+echo "Valor pago: " . $parcelaJessica->getValorPago() .PHP_EOL;*/
+

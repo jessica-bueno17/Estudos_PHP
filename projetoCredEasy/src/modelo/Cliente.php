@@ -1,7 +1,5 @@
 <?php
 
-//namespace br\com\sicredi\src\modelo;
-
 namespace br\com\sicredi\projetoCredEasy\modelo;
 
 class Cliente{

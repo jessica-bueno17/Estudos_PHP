@@ -2,38 +2,44 @@
 
 namespace br\com\sicredi\projetoCredEasy\modelo;
 
-use br\com\sicredi\projetoCredEasy\modelo\Cliente;
-
 class Emprestimo {
 
-  //private $idEmprestimo;
-  //private $cpfDoCliente;
+  private $idEmprestimo;
+  private $cpfDoCliente;
+
   private $valorEmprestimo;
   private $taxaDeJuros;
-  private $valorFinal; // idem
   private $dataDeSolicitacao;
-  private $dataDeQuitacao; // não uso no construtor agora
-  private $statusEmprestimo;
-  
+
+  //não uso no construtor agora
+  private $statusEmprestimo = 'Solicitado';
+  private $dataDeQuitacao = ""; 
+  private $valorFinal;
 
   // função contrutora
-  public function __construct(float $valorEmprestimo, float $taxaDeJuros, float $valorFinal, string $dataDeSolicitacao,
-  string $dataDeQuitacao, string $statusEmprestimo) 
+  public function __construct(int $idEmprestimo, string $cpfDoCliente, float $valorEmprestimo, float $taxaDeJuros,
+  string $dataDeSolicitacao) 
   {
-    
+    $this->setIdEmprestimo($idEmprestimo);
+    $this->setCpfDoCliente($cpfDoCliente);
     $this->setValorEmprestimo($valorEmprestimo);
     $this->setTaxaDeJuros($taxaDeJuros);
-    $this->setValorFinal($valorFinal);
     $this->setDataDeSolicitacao($dataDeSolicitacao);
-    $this->setDataDeQuitacao($dataDeQuitacao);
-    $this->setStatusEmprestimo($statusEmprestimo);
 
   }
 
-  // Validações
-  
+  // ========= Funções Setters ============
+  public function setIdEmprestimo(int $idEmprestimo): void
+  {
+    $this->idEmprestimo = $idEmprestimo;
 
-  // Funções Setters
+  }
+
+  public function setCpfDoCliente(string $cpfDoCliente): void
+  {
+    $this->cpfDoCliente = $cpfDoCliente;
+
+  }
 
   public function setValorEmprestimo(float $valorEmprestimo): void
   {
@@ -47,15 +53,15 @@ class Emprestimo {
 
   }
 
-  public function setValorFinal(float $valorFinal): void
-  {
-    $this->valorFinal = $valorFinal;
-
-  }
-
   public function setDataDeSolicitacao(string $dataDeSolicitacao): void
   {
     $this->dataDeSolicitacao = $dataDeSolicitacao;
+
+  }
+
+  public function setValorFinal(float $valorFinal): void
+  {
+    $this->valorFinal = $valorFinal;
 
   }
 
@@ -71,8 +77,18 @@ class Emprestimo {
 
   }
 
+  // ======== Funções Getters ===========
+  public function getIdEmprestimo(): int
+  {
+    return $this->idEmprestimo;
 
-  // Funções Getters - Funções para recuperar
+  }
+
+  public function getCpfDoCliente(): string
+  {
+    return $this->cpfDoCliente;
+
+  }
 
   public function getValorEmprestimo(): float
   {
@@ -86,17 +102,18 @@ class Emprestimo {
 
   }
 
-  public function getValorFinal(): float
-  {
-    return $this->valorFinal;
-
-  }
-
   public function getDataDeSolicitacao(): string
   {
     return $this->dataDeSolicitacao;
 
   }
+
+  
+  public function getValorFinal(): float
+  {
+    return $this->valorFinal;
+
+  } 
 
   public function getDataDeQuitacao(): string
   {
@@ -106,20 +123,23 @@ class Emprestimo {
 
   public function getStatusEmprestimo(): string
   {
+    
     return $this->statusEmprestimo;
 
   }
 
+
+
 }
 
-//$emprestimoJessica = new Emprestimo(10000, 0.1, 11000, '2022-05-29','2023-05-29', "Em aberto");
-//var_dump($emprestimoJessica);
+$emprestimoJessica = new Emprestimo(2, '007.795.810-16', 2000, 0.10,'2022-05-30');
+var_dump($emprestimoJessica);
 
-//(float $valorEmprestimo, float $taxaDeJuros, float $valorFinal, string $dataDeSolicitacao,
-  //string $dataDeQuitacao, string $statusEmprestimo) 
-/*echo "Empréstimo: " . $emprestimoJessica->getValorEmprestimo() . PHP_EOL;
+/*echo "ID Empréstimo: " . $emprestimoJessica->getIdEmprestimo() . PHP_EOL;
+echo "CPF do Cliente: " . $emprestimoJessica->getCpfDoCliente() . PHP_EOL;
+echo "Empréstimo: " . $emprestimoJessica->getValorEmprestimo() . PHP_EOL;
 echo "Taxa de Juros: " . $emprestimoJessica->getTaxaDeJuros() . PHP_EOL;
-echo "Total do Empréstimo: " . $emprestimoJessica->getValorFinal() . PHP_EOL;
 echo "Data de Solicitação: " . $emprestimoJessica->getDataDeSolicitacao() . PHP_EOL;
-echo "Data de Quitação: " . $emprestimoJessica->getDataDeQuitacao() . PHP_EOL;
-echo "Status do Empréstimo: " . $emprestimoJessica->getStatusEmprestimo() . PHP_EOL;*/
+echo "Status do Empréstimo: " . $emprestimoJessica->getStatusEmprestimo() . PHP_EOL;
+echo "Data de Quitação: " . $emprestimoJessica->getDataDeQuitacao() . PHP_EOL;*/
+//echo "Total do Empréstimo: " . $emprestimoJessica->getValorFinal() . PHP_EOL;
