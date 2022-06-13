@@ -2,6 +2,10 @@
 
 namespace br\com\sicredi\projetoCredEasy\modelo;
 
+require_once 'Cliente.php';
+
+use br\com\sicredi\projetoCredEasy\modelo\Cliente;
+
 class Emprestimo {
 
   private $idEmprestimo;
@@ -16,15 +20,18 @@ class Emprestimo {
   private $dataDeQuitacao = ""; 
   private $valorFinal;
 
+  private $cliente; // usar cpf do cliente... herança
+
   // função contrutora
   public function __construct(int $idEmprestimo, string $cpfDoCliente, float $valorEmprestimo, float $taxaDeJuros,
-  string $dataDeSolicitacao) 
+  string $dataDeSolicitacao, Cliente $cliente) 
   {
     $this->setIdEmprestimo($idEmprestimo);
     $this->setCpfDoCliente($cpfDoCliente);
     $this->setValorEmprestimo($valorEmprestimo);
     $this->setTaxaDeJuros($taxaDeJuros);
     $this->setDataDeSolicitacao($dataDeSolicitacao);
+    $this->cliente = $cliente;
 
   }
 
@@ -129,11 +136,13 @@ class Emprestimo {
   }
 
 
-
 }
 
-$emprestimoJessica = new Emprestimo(2, '007.795.810-16', 2000, 0.10,'2022-05-30');
-var_dump($emprestimoJessica);
+/*$jessica = new Cliente("Jéssica Bueno",'007.795.810-16',1500, "Rua alguma coisa", "bancaria", "9999999",
+ "hsuahh@hhiiajaj.com", "senha12345", "comum");
+
+$emprestimoJessica = new Emprestimo(2, '007.795.810-16', 2000, 0.10,'2022-05-30', $jessica);
+var_dump($emprestimoJessica);*/
 
 /*echo "ID Empréstimo: " . $emprestimoJessica->getIdEmprestimo() . PHP_EOL;
 echo "CPF do Cliente: " . $emprestimoJessica->getCpfDoCliente() . PHP_EOL;

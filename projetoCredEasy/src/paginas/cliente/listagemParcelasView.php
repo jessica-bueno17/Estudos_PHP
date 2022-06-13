@@ -1,6 +1,6 @@
 <?php
 require_once '../../modelo/Parcela.php';
-require_once '../../service/ParcelaService.php';
+require_once '../../ParcelaService.php';
 
 use br\com\sicredi\projetoCredEasy\service\ParcelaService;
 
@@ -32,9 +32,11 @@ $listaDeParcelas = $parcelaService->listaTodasAsParcelas();
                       <th>VALOR DA PARCELA</th>
                       <th>DATA DE VENCIMENTO</th>
                       <th>STATUS DA PARCELA</th>
+                      <th>AÇÕES</th>
                       <th>DATA DE PAGAMENTO</th>
                       <th>MULTA POR ATRASO</th>
                       <th>VALOR PAGO</th>
+                      
 
                   </tr>
               </thead>
@@ -45,8 +47,24 @@ $listaDeParcelas = $parcelaService->listaTodasAsParcelas();
                     <td><?php echo $parcela->getIdEmprestimo(); ?></td>
                     <td><?php echo "R$" .$parcela->getValorParcela(); ?></td>
                     <td><?php echo $parcela->getDataVencimento(); ?></td>
-                    <td><?php echo $parcela->getStatusParcela(); ?></td>
-                   
+
+                    <?php if($parcela->getStatusParcela()==="Paga"){?> 
+                        <td class="bg-success p-2 text-white"> <?php echo $parcela->getStatusParcela(); ?></td>
+                    <?php } ?>
+
+                    <?php if($parcela->getStatusParcela()==="Atrasada"){ ?> 
+                        <td class="bg-danger p-2 text-white"> <?php echo $parcela->getStatusParcela(); ?></td>                  
+                    <?php } ?>
+                    
+                    <?php if($parcela->getStatusParcela()==="Aberta"){ ?> 
+                        <td> <?php echo $parcela->getStatusParcela(); ?></td>                  
+                    <?php } ?>
+
+                    <td><?php if($parcela->getStatusParcela()=== "Aberta"){ ?> 
+                        <button>Pagar</button>
+                        <?php } ?>
+                    </td>
+
                   </tr>
                 <?php } ?>
               </tbody>

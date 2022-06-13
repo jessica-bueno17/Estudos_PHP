@@ -2,6 +2,10 @@
 
 namespace br\com\sicredi\projetoCredEasy\modelo;
 
+require_once 'Emprestimo.php';
+
+use br\com\sicredi\projetoCredEasy\modelo\Emprestimo;
+
 class Parcela {
 
   private $numeroDaParcela;
@@ -13,17 +17,21 @@ class Parcela {
   private $multa;
   private $valorPago;
 
-  private $statusParcela = "Aberta";                     
+  private $statusParcela = "Aberta";
+  
+  private $emprestimo;
                 
   // função contrutora
-  public function __construct(int $numeroDaParcela, int $idEmprestimo, float $valorParcela,
-  string $dataVencimento)
+  public function __construct(int $numeroDaParcela,int $idEmprestimo, float $valorParcela,
+  string $dataVencimento, Emprestimo $emprestimo)
   {
     
     $this->setNumeroDaParcela($numeroDaParcela);
     $this->setIdEmprestimo($idEmprestimo);
+    $this->emprestimo = $emprestimo;
     $this->setValorParcela($valorParcela);
     $this->setDataVencimento($dataVencimento);
+    
      
   }
 
@@ -39,6 +47,7 @@ class Parcela {
     $this->idEmprestimo = $idEmprestimo;
 
   }
+
 
   public function setValorParcela(float $valorParcela): void
   {
