@@ -8,7 +8,6 @@ require_once 'EmprestimoService.php';
 
 use br\com\sicredi\projetoCredEasy\modelo\Emprestimo;
 use br\com\sicredi\projetoCredEasy\modelo\Parcela;
-
 use br\com\sicredi\projetoCredEasy\service\EmprestimoService;
 
 class ParcelaService {

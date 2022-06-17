@@ -1,0 +1,13 @@
+Gostaria que vocês implementasse um projetinho para um cinema. Nele, teremos um  Carrinho de compras 
+para Ingressos de uma Sessão de cinema.
+
+O preço para entrar na Sessão é R$ 30,00, mas temos 3 tipos de Ingresso:
+- INTEIRO: paga o valor cheio;
+- ESTUDANTE: tem 50% de desconto;
+- CONVENIO_SICREDI: tem 80% de desconto.
+
+Então vocês vão adicionar ingressos no carrinho, e depois devem criar uma página para listar o resumo do carrinho: 
+- relação dos ingressos;
+- o preço de cada ingresso;
+- a quantidade de ingressos dentro do carrinho;
+- e o valor total do carrinho.
